@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body class="home">
+        <style>
+            body {
+                background-image: url('http://www.federalmogul.com/en-US/PublishingImages/SocialMedia/socialmedia_background.jpg');
+                background-position: center center;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            .section-home {
+                min-height: 95vh;
+                color: #fff;
+                position: relative;
+            }
+            h1 {
+                text-align: center;
+                font-size: 40px;
+            }
+            p {
+                text-align: center;
+            }
+            .bg-primary {
+                background-color: #CE062B !important;
+            }
+            .btn.btn-success {
+                background-color: #CE062B !important;
+            }
+            .btn.btn-primary.my-2.my-sm-0 {
+                background-color: #015DAA !important;
+            }
+            .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+                color:#DFE2EC !important;
+            }
+            .btn-primary:hover {
+                color: #fff;
+                background-color: #1e2b37;
+                border-color: #1a252f;
+            }
+            .section-home .container{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                max-width: 500px;
+                left: 0;
+                right: 0;
+            }
+        </style>
+        <header>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href=" {{path('home')}}">Coding Heroes</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{path('news')}}">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('news_create')}}">Create article</a>
+                </li>
+                {% if not app.user %}
+                <li class="nav-item">
+                    <a href="{{ path('security_login') }}" class="nav-link">Connect</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                        <a href="{{ path('security_logout') }}" class="nav-link">Disconnect</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                        <a href="{{ path('security_registration') }}" class="nav-link">Inscription</a>
+                </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <section class="section-home">
+            <div class="container">    
+                    {% block body %}{% endblock %}
+                    {% block javascripts %}{% endblock %}
+                </div>
+    </section>
+       
+    </body>
+</html>
+

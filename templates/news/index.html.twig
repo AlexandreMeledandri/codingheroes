@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<section class="articles">
+
+    {% for article in articles %}
+        <article>
+            <h2>{{ article.title }}</h2>
+            <div class="metadata">Ecrit le 10/05/2018 à 18:00 dans la catégorie Info</div>
+            <div class="content">
+                <img src="http://placehold.it/350x150" alt="">
+                {{ article.content | raw }}
+                <a href="{{ path('news_show', {'id': article.id}) }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+    </article>
+    {% endfor %}
+   
+</section>
+{% endblock %}

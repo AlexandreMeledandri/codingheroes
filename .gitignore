@@ -9,6 +9,10 @@ composer.phar
 # composer.lock
 
 ### Symfony ###
+
+.env.local
+.env.*.local
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -29,8 +33,6 @@ composer.phar
 # Logs (Symfony4)
 /var/log/*
 !var/log/.gitkeep
-
-.env
 
 # Parameters
 /app/config/parameters.yml

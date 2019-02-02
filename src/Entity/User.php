@@ -96,6 +96,11 @@ class User implements UserInterface
      */
     private $teams;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SchoolClass", inversedBy="users")
+     */
+    private $SchoolClass;
+
     public function __construct()
     {
         $this->personalSkills = new ArrayCollection();
@@ -358,6 +363,18 @@ class User implements UserInterface
             $this->teams->removeElement($team);
             $team->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getSchoolClass(): ?SchoolClass
+    {
+        return $this->SchoolClass;
+    }
+
+    public function setSchoolClass(?SchoolClass $SchoolClass): self
+    {
+        $this->SchoolClass = $SchoolClass;
 
         return $this;
     }
